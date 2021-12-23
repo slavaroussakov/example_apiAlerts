@@ -11,6 +11,14 @@ Install the requirements.txt dependencies
 pip install -r requirements.txt
 ```
 
+To use dockerfile:
+(In root directory:)
+```bash
+docker build -t example/apialerts .
+docker run --rm example/apialerts -c ethusd
+```
+Substituting "ethusd" for any needed trading pair.
+
 ## Usage
 
 From root of directory:
