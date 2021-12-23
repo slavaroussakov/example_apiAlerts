@@ -42,10 +42,12 @@ My approach to this solution happened in these steps:
 I went with an object oriented approach, as with these types of tools I can
 see a high likelihood of someone needing to update this code or add a check
 or source.
+
 This class structure uses a basic Factory pattern to implement inversion of
 control, allowing the checks to exist on their own with easy ability to add
 new checks or edit existing ones, as well as switch out dependencies, like
 other repos and result processors.
+
 My intention was to have the time to implement some unit tests and create
 a coded expectation of how these checks are to function. Unfortunately, I
 ran out of time, but the unit tests are no less important.
@@ -54,12 +56,14 @@ ran out of time, but the unit tests are no less important.
 - Syntax
 I didn't add parentheses to a couple of method calls which resulted in a JSON
 serialization error, that took me a bit longer to figure out than necessary.
+
 - Design
 Originally I had set the timestamp to be created by the result processor at
 the end of program execution, however I decided it would be more reliable to
-pull the timestamp from the HTTP response object, in case a bug is encountered
-that creates a delay between the request and the end of program execution.
+pull the timestamp from the HTTP response object.
+This is in case a bug is encountered that creates a delay between the request and the end of program execution.
 This created some rework, as I didn't consider this during design.
+
 - Parameters
 I ran out of time to pass the deviation percentage parameter through.
 
