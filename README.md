@@ -5,34 +5,33 @@ and report the data to stdout. Other checks and reporting mechanisms can be adde
 
 ## Requirements
 
+*Python 3.10 or higher is required*
+
 Install the requirements.txt dependencies
 
+*In root directory*
 ```bash
-pip install -r requirements.txt
+pip install -r ./requirements.txt
 ```
 
 To use dockerfile:
-(In root directory:)
+
+*In root directory*
 ```bash
 docker build -t example/apialerts .
 docker run --rm example/apialerts -c ethusd
 ```
-Substituting "ethusd" for any needed trading pair.
+*Substituting "ethusd" for any needed trading pair.*
 
 ## Usage
 
-From root of directory:
-
-```bash
-./apiAlert -c <trading pair>
-```
-
-Examples:
-
+*In root directory*
 ```bash
 ./apiAlert -c btcusd
 ```
+*Substituting <trading pair> for any needed trading pair.*
 
+Help memu:
 ```bash
 ./apiAlert --help
 ```
@@ -81,21 +80,13 @@ Aside from those things and running out of time, the process went pretty smoothl
 
 ## To improve this
 
-- Unit tests. This design takes unit testing into consideration, so that it should be easy to test various cases.
-- Depending on the development environment and context, I would create more a more formal interface for classes, so that coding to interface is preferred and coding to implementation is less likely. Otherwise, it may be acceptable to drop the parent classes for repos and result processors, to simplify.
-- Pylint
-I created docstrings as they are required by pylint, but my initial goal was
-to have the code be fairly self-explanatory, in which case the docstrings may
-be making this less readable than more. I would spend more time on making those
-more clear or readable.
-- Parameters
-Currently any argument is accepted as a trading pair. This will result in an error and an unneeded call to the API.
-I would have a set of allowed trading pairs. Or if this is enough of a problem in its environment, have a separate code path to refresh a list of currently available trading pairs.
-Separately, this needs to have a deviation percentage threshold parameter added.
-- Logging
-Didn't have enough time to get a log level switch and logging statements into the application itself. Those would be useful.
-- Create a python wheel and allow it to be installed through pip
-- Add a virtualenv config for development purposes.
+- Unit tests - This design takes unit testing into consideration, so that it should be easy to test various cases.
+- Interfaces - Depending on the development environment and context, I would create more a more formal interface for classes, so that coding to interface is preferred and coding to implementation is less likely. Otherwise, it may be acceptable to drop the parent classes for repos and result processors, to simplify.
+- Pylint - I created docstrings as they are required by pylint, but my initial goal was to have the code be fairly self-explanatory, in which case the docstrings may be making this less readable than more. I would spend more time on making those more clear or readable.
+- Parameters - Currently any argument is accepted as a trading pair. This will result in an error and an unneeded call to the API. I would have a set of allowed trading pairs. Or if this is enough of a problem in its environment, have a separate code path to refresh a list of currently available trading pairs. Separately, this needs to have a deviation percentage threshold parameter added.
+- Logging - Didn't have enough time to get a log level switch and logging statements into the application itself. Those would be useful.
+- Package - Create a python wheel and allow it to be installed through pip
+- Development - Add a virtualenv config for development purposes.
 
 
 ## Other checks to add
