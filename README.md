@@ -14,15 +14,6 @@ Install the requirements.txt dependencies
 pip install -r ./requirements.txt
 ```
 
-To use dockerfile:
-
-*In root directory*
-```bash
-docker build -t example/apialerts .
-docker run --rm example/apialerts -c ethusd
-```
-*Substituting "ethusd" for any needed trading pair.*
-
 ## Usage
 
 *In root directory*
@@ -31,10 +22,19 @@ docker run --rm example/apialerts -c ethusd
 ```
 *Substituting <trading pair> for any needed trading pair.*
 
-Help memu:
+Help menu:
 ```bash
 ./apiAlert --help
 ```
+  
+Alternatively, to use dockerfile:
+
+*In root directory*
+```bash
+docker build -t example/apialerts .
+docker run --rm example/apialerts -c ethusd
+```
+*Substituting "ethusd" for any needed trading pair.*
 
 ## Approach
 My approach to this solution happened in these steps:
@@ -60,19 +60,14 @@ a coded expectation of how these checks are to function. Unfortunately, I
 ran out of time, but the unit tests are no less important.
 
 ## Issues faced
-- Syntax
-I didn't add parentheses to a couple of method calls which resulted in a JSON
-serialization error, that took me a bit longer to figure out than necessary.
+- Syntax - I didn't add parentheses to a couple of method calls which resulted in a JSON serialization error, that took me a bit longer to figure out than necessary.
 
-- Design
-Originally I had set the timestamp to be created by the result processor at
-the end of program execution, however I decided it would be more reliable to
+- Design - Originally I had set the timestamp to be created by the result processor at the end of program execution, however I decided it would be more reliable to
 pull the timestamp from the HTTP response object.
 This is in case a bug is encountered that creates a delay between the request and the end of program execution.
 This created some rework, as I didn't consider this during design.
 
-- Parameters
-I ran out of time to pass the deviation percentage parameter through.
+- Parameters - I ran out of time to pass the deviation percentage parameter through.
 
 
 Aside from those things and running out of time, the process went pretty smoothly
